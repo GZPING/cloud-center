@@ -1,0 +1,66 @@
+spring:
+  profiles:
+    active: eureka1
+
+---
+spring:
+  profiles: eureka1
+  application:
+    name: eureka-cluster
+server:
+  port: 8271
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+---
+spring:
+  profiles: eureka2
+  application:
+    name: eureka-cluster
+server:
+  port: 8272
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+---
+spring:
+  profiles: test-eureka1
+  application:
+    name: eureka-cluster
+server:
+  port: 8271
+eureka:
+  instance:
+    hostname: 192.168.128.175
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+---
+spring:
+  profiles: test-eureka2
+  application:
+    name: eureka-cluster
+server:
+  port: 8272
+eureka:
+  instance:
+    hostname: 192.168.128.175
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
